@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player de Música</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .player {
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #fff;
+            max-width: 400px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 10px;
+            cursor: pointer;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+
+        li:hover {
+            background-color: #eee;
+        }
+
+        .current {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        iframe {
+            width: 100%;
+            height: 250px;
+            border: none;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Player de Música</h1>
+
+    <div class="player">
+        <iframe id="youtube-player" src="https://www.youtube.com/embed/xwtdhWltSIg?autoplay=1&enablejsapi=1" allow="autoplay" allowfullscreen></iframe>
+
+        <h3>Lista de Reprodução - Folk Nacional e Internacional</h3>
+        <ul id="playlist">
+            <li onclick="selectMusic('xwtdhWltSIg', this)" class="current">Simon & Garfunkel - The Sound of Silence</li>
+            <li onclick="selectMusic('HfApBz4_XQk', this)">Bob Dylan - Blowin' in the Wind</li>
+            <li onclick="selectMusic('cWGE9Gi0bB0', this)">Joan Baez - Diamonds and Rust</li>
+            <li onclick="selectMusic('DkRoIMgV_i8', this)">Nick Drake - Pink Moon</li>
+            <li onclick="selectMusic('Nd-A-iiPoLg', this)">Iron & Wine - Naked as We Came</li>
+            <li onclick="selectMusic('QTflvW-p-gw', this)">Fleet Foxes - White Winter Hymnal</li>
+            <li onclick="selectMusic('lLJf9qJHR3E', this)">Mumford & Sons - Little Lion Man</li>
+            <li onclick="selectMusic('s4_4abCWw-w', this)">José González - Heartbeats</li>
+            <li onclick="selectMusic('jtFj4Vu4uiM', this)">Leonard Cohen - Suzanne</li>
+            <li onclick="selectMusic('vt1Pwfnh5pc', this)">Johnny Cash - Hurt</li>
+            <li onclick="selectMusic('7U-rbYYPMB0', this)">Elza Soares - Oração</li>
+            <li onclick="selectMusic('gfFGGRKUEV8', this)">Gilberto Gil - Refazenda</li>
+            <li onclick="selectMusic('tohGkRWSpJA', this)">Almir Sater - Tocando em Frente</li>
+            <li onclick="selectMusic('PpPsjtoqu-4', this)">Zé Ramalho - Chão de Giz</li>
+            <li onclick="selectMusic('Y3oINDF9MoM', this)">Vanguart - Semáforo</li>
+        </ul>
+    </div>
+
+    <script>
+        const youtubePlayer = document.getElementById('youtube-player');
+        const playlistItems = document.querySelectorAll('#playlist li');
+
+        function selectMusic(videoId, element) {
+            youtubePlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&enablejsapi=1`;
+
+            playlistItems.forEach(item => {
+                item.classList.remove('current');
+            });
+
+            element.classList.add('current');
+        }
+    </script>
+</body>
+</html>
